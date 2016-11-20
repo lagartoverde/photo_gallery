@@ -1,7 +1,7 @@
 <?php
 
-require_once("../includes/database.php");
-require_once("../includes/user.php");
+require_once("../includes/initialize.php");
+
 
 if(isset($database)){ echo "true"; }else{ echo "false"; }
 echo "<br>";
@@ -21,15 +21,17 @@ echo $found_user['username'];
 
 echo "<br><br><hr><br>";
 
-$found_user=User::find_by_id(1);
-echo $found_user['username'];
+$user=User::find_by_id(1);
+echo $user->full_name();
 
 echo "<br><br><hr><br>";
 
-$user_set=User::find_all();
-while ($user=$database->fetch_array($user_set)){
-	echo "User: ".$user['username']."<br>";
-	echo "Name: ".$user['first_name']."<br><br>";
+$users=User::find_all();
+foreach ($users as $user) {
+	echo "User: {$user->username}<br>";
+	echo "Full Name: {$user->full_name()}<br><br>";
 }
+
+$Junk=new Junk();
 
 ?>
