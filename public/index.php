@@ -1,6 +1,7 @@
+<?php require_once("../includes/initialize.php"); ?>
+<?php include_layout_template("header.php"); ?>
 <?php
 
-require_once("../includes/initialize.php");
 
 
 if(isset($database)){ echo "true"; }else{ echo "false"; }
@@ -32,6 +33,7 @@ foreach ($users as $user) {
 	echo "Full Name: {$user->full_name()}<br><br>";
 }
 
-$Junk=new Junk();
+log_action("login","kskoglund logged in.");
 
 ?>
+<?php include_layout_template("footer.php"); ?>

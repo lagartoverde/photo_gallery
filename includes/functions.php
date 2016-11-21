@@ -31,4 +31,21 @@ function __autoload($class_name){
 	}
 }  
 
+function include_layout_template($template =""){
+	include(SITE_ROOT.DS.'public'.DS.'layouts'.DS.$template);
+}
+
+function log_action($action,$message=""){
+	  if(file_exists(SITE_ROOT.DS."logs".DS."log.txt")){
+	  	$handler=fopen(SITE_ROOT.DS."logs".DS."log.txt", "a");
+	  }else{
+		$handler=fopen(SITE_ROOT.DS."logs".DS."log.txt", "w");
+	  }
+
+	  $content=strftime("%d-%m-%Y %H:%M:%S ",time());
+	  $content.="| {$action}: {$message} \n";
+	  fwrite($handler, $content);
+	  fclose($handler);
+}
+
 ?> 

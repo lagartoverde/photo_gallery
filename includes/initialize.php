@@ -15,6 +15,7 @@ require_once(LIB_PATH.DS."functions.php");
 //load core objects
 require_once(LIB_PATH.DS."session.php");
 require_once(LIB_PATH.DS."database.php");
+require_once(LIB_PATH.DS."database_object.php");
 
 //load database-relayed classes
 require_once(LIB_PATH.DS."user.php");
