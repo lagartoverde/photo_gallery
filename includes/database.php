@@ -48,7 +48,7 @@
 			return mysqli_num_rows($result_set);
 		}
 
-		public function inser_id(){
+		public function insert_id(){
 			return mysqli_insert_id($this->connection);
 		}
 
