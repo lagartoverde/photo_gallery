@@ -25,6 +25,7 @@ if(!$session->is_logged_in()){
 			echo "<th style=\"border: 1px solid black; padding:20px \"> Size </td>";
 			echo "<th style=\"border: 1px solid black; padding:20px \"> Caption </td>";
 			echo "<th style=\"border: 1px solid black; padding:20px \"> &nbsp </td>";
+			echo "<th style=\"border: 1px solid black; padding:20px \"> &nbsp </td>";
 
  
 		echo "</tr>";
@@ -36,6 +37,7 @@ if(!$session->is_logged_in()){
 			echo "<td style=\"border: 1px solid black; vertical-align:middle; padding:20px \">".$photo->type."</td>";
 			echo "<td style=\"border: 1px solid black; vertical-align:middle; padding:20px \">".$photo->get_size()."</td>";
 			echo "<td style=\"border: 1px solid black; vertical-align:middle; padding:20px \">".$photo->caption."</td>";
+			echo "<td style=\"border: 1px solid black; vertical-align:middle; padding:20px \"><a href=\"photo_comments.php?id=".$photo->id."\">Comments</td>";
 			echo "<td style=\"border: 1px solid black; vertical-align:middle; padding:20px \"><a href=\"delete_photo.php?id=".$photo->id."\">Delete</td>";
 
 

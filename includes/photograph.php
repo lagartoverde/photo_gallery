@@ -106,6 +106,10 @@
 			}
 		}
 
+		public function comments(){
+			return Comment::find_comments_on($this->id);
+		}
+
 		//it deletes the database from the database and from the file system.
 		public function destroy(){
 			if($this->delete()){
