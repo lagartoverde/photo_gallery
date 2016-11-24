@@ -15,6 +15,7 @@
 
 		public static function find_by_id($id=0){
 			global $database;
+			$id=$database->escape_value($id);
 			$result_array=static::find_by_sql("SELECT * FROM ".static::$table_name." WHERE id={$id}");
 			return !empty($result_array) ? array_shift($result_array) : false;
 		}

@@ -91,6 +91,31 @@
 			}
 		}
 
+		public function get_full_path(){
+			return DS.'photo_gallery'.DS.'public'.DS.$this->upload_dir.DS.$this->filename;
+		}
+
+		//this express the size in kb or mb if it needs to
+		public function get_size(){
+			if($this->size<1024){
+				return $this->size;
+			}elseif($this->size<(1024*1024)){
+				return round(($this->size/1024))."KB";
+			}else{
+				return round(($this->size/(1024*1024)),1)."MB";
+			}
+		}
+
+		//it deletes the database from the database and from the file system.
+		public function destroy(){
+			if($this->delete()){
+				return unlink(SITE_ROOT.DS.'public'.DS.$this->upload_dir.DS.$this->filename)? true: false;
+			}else{
+				return false;
+			}
+			
+		}
+
 	}
 
 

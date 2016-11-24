@@ -9,15 +9,14 @@ if(!$session->is_logged_in()){
 <?php
 	$max_file_size= 1048576; // 1MB 
 
-	$message="";
-
 	if(isset($_POST['submit'])){
 		$photo=new Photograph();
 		$photo->caption=$_POST['caption'];
 		$photo->attach_file($_FILES['file_upload']);
 		if($photo->save()){
 			//Success
-			$message="Photograph uploaded successfully";
+			$session->message("Photograph uploaded successfully");
+			redirect_to("photo_list.php");
 		}else{
 			//Failure
 			$message=join("<br>",$photo->errors);

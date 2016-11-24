@@ -1,39 +1,15 @@
 <?php require_once("../includes/initialize.php"); ?>
 <?php include_layout_template("header.php"); ?>
+<h2> Photo Gallery</h2>
 <?php
 
-
-
-if(isset($database)){ echo "true"; }else{ echo "false"; }
-echo "<br>";
-
-echo "Is this working?";
-echo "<br>";
-
-//$sql = "INSERT INTO users (id,username,password,first_name,last_name) VALUES (1,'oscar','1234','oscar','rodriguez') ";
-//$result=$database->query($sql);
-
-echo "<br>";
-
-$sql="SELECT * FROM users WHERE id=1";
-$result_set=$database->query($sql);
-$found_user=$database->fetch_array($result_set);
-echo $found_user['username'];
-
-echo "<br><br><hr><br>";
-
-$user=User::find_by_id(1);
-echo $user->full_name();
-
-echo "<br><br><hr><br>";
-
-$users=User::find_all();
-foreach ($users as $user) {
-	echo "User: {$user->username}<br>";
-	echo "Full Name: {$user->full_name()}<br><br>";
-}
-
-log_action("login","kskoglund logged in.");
+	$photos=Photograph::find_all();
+	foreach ($photos as $photo) {
+		echo "<div style=\"float:left; margin-left:20px\">";
+		echo "<a href=\"photo.php?id=".$photo->id."\"><img src=".$photo->get_full_path()." width=\"200px\"/></a>";
+		echo "<p style=\"text-align:center\">{$photo->caption}</p>";
+		echo "</div>";
+	}
 
 ?>
 <?php include_layout_template("footer.php"); ?>
