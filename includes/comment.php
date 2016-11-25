@@ -33,5 +33,28 @@
 			return $comment_array;
 		}
 
+		public function send_notification(){
+
+			$mail=new PHPMailer();
+
+
+			$mail->FromName="Photo Gallery";
+			$mail->From="oscar.rodriguez@greengeckowebs.com";
+			$mail->AddAddress("lagartoverde97@gmail.com","Oscar");
+			$mail->Subject="New Photo Gallery Comment";
+			$mail->Body=<<<EMAILBODY
+
+A new comment has been received in the Photo  Gallery.
+
+At {$this->created}, {$this->author} wrote:
+
+{$this->body}
+
+EMAILBODY;
+
+			$result=$mail->Send();
+			return $result;
+		}
+
 	}
 ?>
